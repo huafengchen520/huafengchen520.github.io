@@ -1,0 +1,1215 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    <meta name="keywords" content="Thymeleaf -- 一款可以替代jsp的模板引擎, blog，技术，学习，成长">
+    <meta name="description" content="一、thymeleaf 是什么简单说， Thymeleaf 是一个跟 Velocity、FreeMarker 类似的模板引擎，它可以完全替代 JSP 。相较与其他的模板引擎，它有如下三个极吸引人的特点：
+1.Thymeleaf 在有网络和无">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>Thymeleaf -- 一款可以替代jsp的模板引擎 | 桦峰的blog</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+    <style type="text/css">
+        
+    </style>
+
+    <script src="/libs/jquery/jquery-2.2.0.min.js"></script>
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+
+
+<body>
+
+<header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">桦峰的blog</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fa fa-navicon"></i></a>
+<ul class="right">
+    
+    <li class="hide-on-med-and-down">
+        <a href="/" class="waves-effect waves-light">
+            
+            <i class="fa fa-home"></i>
+            
+            <span>主页</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/tags" class="waves-effect waves-light">
+            
+            <i class="fa fa-tags"></i>
+            
+            <span>标签</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/categories" class="waves-effect waves-light">
+            
+            <i class="fa fa-bookmark"></i>
+            
+            <span>分类</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/archives" class="waves-effect waves-light">
+            
+            <i class="fa fa-archive"></i>
+            
+            <span>归档</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/about" class="waves-effect waves-light">
+            
+            <i class="fa fa-user-circle-o"></i>
+            
+            <span>关于作者</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/friends" class="waves-effect waves-light">
+            
+            <i class="fa fa-address-book"></i>
+            
+            <span>友情链接</span>
+        </a>
+    </li>
+    
+    <li>
+        <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+            <i id="searchIcon" class="fa fa-search" title="搜索"></i>
+        </a>
+    </li>
+</ul>
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">桦峰的blog</div>
+        <div class="logo-desc">
+            
+            最怕不甘平庸，却又不愿行动
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li>
+            <a href="/" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-home"></i>
+                
+                主页
+            </a>
+        </li>
+        
+        <li>
+            <a href="/tags" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-tags"></i>
+                
+                标签
+            </a>
+        </li>
+        
+        <li>
+            <a href="/categories" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-bookmark"></i>
+                
+                分类
+            </a>
+        </li>
+        
+        <li>
+            <a href="/archives" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-archive"></i>
+                
+                归档
+            </a>
+        </li>
+        
+        <li>
+            <a href="/about" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-user-circle-o"></i>
+                
+                关于作者
+            </a>
+        </li>
+        
+        <li>
+            <a href="/friends" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-address-book"></i>
+                
+                友情链接
+            </a>
+        </li>
+        
+        
+    </ul>
+</div>
+
+        </div>
+
+        
+    </nav>
+
+</header>
+
+
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/15.jpg')">
+    <div class="container">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <div class="description center-align post-title">
+                        Thymeleaf -- 一款可以替代jsp的模板引擎
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        margin: 35px 0 15px 0;
+        padding-left: 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #toc-content .is-active-link::before {
+        background-color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 20px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/模板引擎/" target="_blank">
+                                <span class="chip bg-color">模板引擎</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fa fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/后端开发/" class="post-category" target="_blank">
+                                后端开发
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                <div class="post-date info-break-policy">
+                    <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2019-06-11
+                </div>
+
+                
+				
+				
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="fa fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
+            </div>
+        </div>
+        <hr class="clearfix">
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h1 id="一、thymeleaf-是什么"><a href="#一、thymeleaf-是什么" class="headerlink" title="一、thymeleaf 是什么"></a>一、thymeleaf 是什么</h1><p><img src="https://www.thymeleaf.org/images/thymeleaf.png" alt="Thymeleaf 模板引擎 "><br>简单说， Thymeleaf 是一个跟 Velocity、FreeMarker 类似的模板引擎，它可以完全替代 JSP 。相较与其他的模板引擎，它有如下三个极吸引人的特点：</p>
+<p>1.Thymeleaf 在有网络和无网络的环境下皆可运行，即它可以让美工在浏览器查看页面的静态效果，也可以让程序员在服务器查看带数据的动态页面效果。这是由于它支持 html 原型，然后在 html 标签里增加额外的属性来达到模板+数据的展示方式。浏览器解释 html 时会忽略未定义的标签属性，所以 thymeleaf 的模板可以静态地运行；当有数据返回到页面时，Thymeleaf 标签会动态地替换掉静态内容，使页面动态显示。</p>
+<p>2.Thymeleaf 开箱即用的特性。它提供标准和spring标准两种方言，可以直接套用模板实现JSTL、 OGNL表达式效果，避免每天套模板、该jstl、改标签的困扰。同时开发人员也可以扩展和创建自定义的方言。</p>
+<p>3.Thymeleaf 提供spring标准方言和一个与 SpringMVC 完美集成的可选模块，可以快速的实现表单绑定、属性编辑器、国际化等功能。</p>
+<h1 id="二、thymeleaf-的用法"><a href="#二、thymeleaf-的用法" class="headerlink" title="二、thymeleaf 的用法"></a>二、thymeleaf 的用法</h1><h2 id="1-标准表达式语法"><a href="#1-标准表达式语法" class="headerlink" title="1. 标准表达式语法"></a>1. 标准表达式语法</h2><p>它们分为四类：</p>
+<p>1）.变量表达式<br>2）.选择或星号表达式<br>3）.文字国际化表达式<br>4）.URL表达式</p>
+<h3 id="1）-变量表达式"><a href="#1）-变量表达式" class="headerlink" title="1）.变量表达式"></a>1）.变量表达式</h3><p>变量表达式即OGNL表达式或Spring EL表达式(在Spring术语中也叫model attributes)。如下所示： </p>
+<pre><code>${session.user.name}</code></pre><p>它们将以HTML标签的一个属性来表示：</p>
+<pre><code>&lt;span th:text=&quot;${book.author.name}&quot;&gt;  
+&lt;li th:each=&quot;book : ${books}&quot;&gt;  </code></pre><h3 id="2）-选择-星号-表达式"><a href="#2）-选择-星号-表达式" class="headerlink" title="2）.选择(星号)表达式"></a>2）.选择(星号)表达式</h3><p>选择表达式很像变量表达式，不过它们用一个预先选择的对象来代替上下文变量容器(map)来执行，选择表达式与变量表达式有一个重要的区别：选择表达式计算的是选定的对象，而不是整个环境变量映射。也就是：只要是没有选择的对象，选择表达式与变量表达式的语法是完全一样的。那什么是选择的对象呢？是一个：th:object对象属性绑定的对象。如下： </p>
+<pre><code>*{customer.name}</code></pre><p>被指定的object由th:object属性定义：</p>
+<pre><code>    &lt;div th:object=&quot;${book}&quot;&gt;  
+      ...  
+      &lt;span th:text=&quot;*{title}&quot;&gt;...&lt;/span&gt;  
+      ...  
+    &lt;/div&gt;  </code></pre><h3 id="3）-文字国际化表达式"><a href="#3）-文字国际化表达式" class="headerlink" title="3）.文字国际化表达式"></a>3）.文字国际化表达式</h3><p>文字国际化表达式允许我们从一个外部文件获取区域文字信息(.properties)，用Key索引Value，还可以提供一组参数(可选)。<br>例如：<br>新建/WEB-INF/templates/home.html，段落</p>
+<pre><code>&lt;p th: text=&quot; #{home. welcome}&quot; &gt;This text will not be show! &lt;/p&gt;</code></pre><p>新建/WEB-INF/templates/home.properties，home.welcome：<br>home.welcome=this messages is from home.properties!</p>
+<p>可以看出，消息表达式通常用于显示页面静态文本，将静态文本维护在properties文件中也方面维护，做国际化等。</p>
+<h3 id="4）-URL表达式"><a href="#4）-URL表达式" class="headerlink" title="4）.URL表达式"></a>4）.URL表达式</h3><p>URL表达式指的是把一个有用的上下文或回话信息添加到URL，这个过程经常被叫做URL重写。<br><code>@{/order/list}</code><br>URL还可以设置参数：<br><code>@{/order/details(id=${orderId})}</code><br>相对路径：<br><code>@{../documents/report}</code></p>
+<p>让我们看这些表达式：</p>
+<pre><code>    &lt;form th:action=&quot;@{/createOrder}&quot;&gt;  
+    &lt;a href=&quot;main.html&quot; th:href=&quot;@{/main}&quot;&gt;</code></pre><h3 id="5）-变量表达式和星号表达有什么区别吗？"><a href="#5）-变量表达式和星号表达有什么区别吗？" class="headerlink" title="5）.变量表达式和星号表达有什么区别吗？"></a>5）.变量表达式和星号表达有什么区别吗？</h3><p>如果不考虑上下文的情况下，两者没有区别；星号语法评估在选定对象上表达，而不是整个上下文<br>什么是选定对象？就是父标签的值，如下：</p>
+<pre><code>  &lt;div th:object=&quot;${session.user}&quot;&gt;
+    &lt;p&gt;Name: &lt;span th:text=&quot;*{firstName}&quot;&gt;Sebastian&lt;/span&gt;.&lt;/p&gt;
+    &lt;p&gt;Surname: &lt;span th:text=&quot;*{lastName}&quot;&gt;Pepper&lt;/span&gt;.&lt;/p&gt;
+    &lt;p&gt;Nationality: &lt;span th:text=&quot;*{nationality}&quot;&gt;Saturn&lt;/span&gt;.&lt;/p&gt;
+  &lt;/div&gt;</code></pre><p>这是完全等价于：</p>
+<pre><code>&lt;div th:object=&quot;${session.user}&quot;&gt;
+      &lt;p&gt;Name: &lt;span th:text=&quot;${session.user.firstName}&quot;&gt;Sebastian&lt;/span&gt;.&lt;/p&gt;
+      &lt;p&gt;Surname: &lt;span th:text=&quot;${session.user.lastName}&quot;&gt;Pepper&lt;/span&gt;.&lt;/p&gt;
+      &lt;p&gt;Nationality: &lt;span th:text=&quot;${session.user.nationality}&quot;&gt;Saturn&lt;/span&gt;.&lt;/p&gt;
+  &lt;/div&gt;</code></pre><p>当然，美元符号和星号语法可以混合使用：</p>
+<pre><code>  &lt;div th:object=&quot;${session.user}&quot;&gt;
+      &lt;p&gt;Name: &lt;span th:text=&quot;*{firstName}&quot;&gt;Sebastian&lt;/span&gt;.&lt;/p&gt;
+      &lt;p&gt;Surname: &lt;span th:text=&quot;${session.user.lastName}&quot;&gt;Pepper&lt;/span&gt;.&lt;/p&gt;
+      &lt;p&gt;Nationality: &lt;span th:text=&quot;*{nationality}&quot;&gt;Saturn&lt;/span&gt;.&lt;/p&gt;
+  &lt;/div&gt;</code></pre><h2 id="2-表达式支持的语法"><a href="#2-表达式支持的语法" class="headerlink" title="2. 表达式支持的语法"></a>2. 表达式支持的语法</h2><h3 id="1-字面（Literals）"><a href="#1-字面（Literals）" class="headerlink" title="1).字面（Literals）"></a>1).字面（Literals）</h3><p>文本文字（Text literals）: ‘one text’, ‘Another one!’,…<br>数字文本（Number literals）: 0, 34, 3.0, 12.3,…<br>布尔文本（Boolean literals）: true, false<br>空（Null literal）: null<br>文字标记（Literal tokens）: one, sometext, main,…</p>
+<h3 id="2-文本操作（Text-operations）"><a href="#2-文本操作（Text-operations）" class="headerlink" title="2).文本操作（Text operations）"></a>2).文本操作（Text operations）</h3><p>字符串连接(String concatenation): +<br>文本替换（Literal substitutions）: |The name is ${name}|</p>
+<h3 id="3-算术运算（Arithmetic-operations）"><a href="#3-算术运算（Arithmetic-operations）" class="headerlink" title="3).算术运算（Arithmetic operations）"></a>3).算术运算（Arithmetic operations）</h3><p>二元运算符（Binary operators）: +, -, *, /, %<br>减号（单目运算符）Minus sign (unary operator): -</p>
+<h3 id="4-布尔操作（Boolean-operations）"><a href="#4-布尔操作（Boolean-operations）" class="headerlink" title="4).布尔操作（Boolean operations）"></a>4).布尔操作（Boolean operations）</h3><p>二元运算符（Binary operators）:and, or<br>布尔否定（一元运算符）Boolean negation (unary operator):!, not</p>
+<h3 id="5-比较和等价-Comparisons-and-equality"><a href="#5-比较和等价-Comparisons-and-equality" class="headerlink" title="5).比较和等价(Comparisons and equality)"></a>5).比较和等价(Comparisons and equality)</h3><p>比较（Comparators）: &gt;, &lt;, &gt;=, &lt;= (gt, lt, ge, le)<br>等值运算符（Equality operators）:==, != (eq, ne)</p>
+<h3 id="6-条件运算符（Conditional-operators）"><a href="#6-条件运算符（Conditional-operators）" class="headerlink" title="6).条件运算符（Conditional operators）"></a>6).条件运算符（Conditional operators）</h3><p>If-then: (if) ? (then)<br>If-then-else: (if) ? (then) : (else)<br>Default: (value) ?: (defaultvalue)</p>
+<p><strong>所有这些特征可以被组合并嵌套：</strong></p>
+<pre><code>&#39;User is of type &#39; + (${user.isAdmin()} ? &#39;Administrator&#39; : (${user.type} ?: &#39;Unknown&#39;))</code></pre><h2 id="3-常用的Th标签"><a href="#3-常用的Th标签" class="headerlink" title="3. 常用的Th标签"></a>3. 常用的Th标签</h2><table>
+<thead>
+<tr>
+<th align="center">关键字</th>
+<th align="center">功能介绍</th>
+<th align="center">案例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">th:id</td>
+<td align="center">替换id</td>
+<td align="center"><code>&lt;input th:id=&quot;&#39;xxx&#39; + ${collect.id}&quot;/&gt;</code></td>
+</tr>
+<tr>
+<td align="center">th:text</td>
+<td align="center">文本替换</td>
+<td align="center"><code>&lt;p th:text=&quot;${collect.description}&quot;&gt;description&lt;/p&gt;</code></td>
+</tr>
+<tr>
+<td align="center">th:utext</td>
+<td align="center">支持html的文本替换</td>
+<td align="center"><code>&lt;p th:utext=&quot;${htmlcontent}&quot;&gt;conten&lt;/p&gt;</code></td>
+</tr>
+<tr>
+<td align="center">th:object</td>
+<td align="center">替换对象</td>
+<td align="center"><code>&lt;div th:object=&quot;${session.user}&quot;&gt;</code></td>
+</tr>
+<tr>
+<td align="center">th:value</td>
+<td align="center">属性赋值</td>
+<td align="center"><code>&lt;input th:value=&quot;${user.name}&quot; /&gt;</code></td>
+</tr>
+<tr>
+<td align="center">th:with</td>
+<td align="center">变量赋值运算</td>
+<td align="center"><code>&lt;div th:with=&quot;isEven=${prodStat.count}%2==0&quot;&gt;&lt;/div&gt;</code></td>
+</tr>
+<tr>
+<td align="center">th:style</td>
+<td align="center">设置样式</td>
+<td align="center"><code>th:style=&quot;&#39;display:&#39; + @{(${sitrue} ? &#39;none&#39; : &#39;inline-block&#39;)} + &#39;&#39;&quot;</code></td>
+</tr>
+<tr>
+<td align="center">th:onclick</td>
+<td align="center">点击事件</td>
+<td align="center"><code>th:onclick=&quot;&#39;getCollect()&#39;&quot;</code></td>
+</tr>
+<tr>
+<td align="center">th:each</td>
+<td align="center">属性赋值</td>
+<td align="center"><code>tr th:each=&quot;user,userStat:${users}&quot;&gt;</code></td>
+</tr>
+<tr>
+<td align="center">th:if</td>
+<td align="center">判断条件</td>
+<td align="center"><code>&lt;a th:if=&quot;${userId == collect.userId}&quot; &gt;</code></td>
+</tr>
+<tr>
+<td align="center">th:unless</td>
+<td align="center">和th:if判断相反</td>
+<td align="center"><code>&lt;a th:href=&quot;@{/login}&quot; th:unless=${session.user != null}&gt;Login&lt;/a&gt;</code></td>
+</tr>
+<tr>
+<td align="center">th:href</td>
+<td align="center">链接地址</td>
+<td align="center"><code>&lt;a th:href=&quot;@{/login}&quot; th:unless=${session.user != null}&gt;Login&lt;/a&gt; /&gt;</code></td>
+</tr>
+<tr>
+<td align="center">th:switch</td>
+<td align="center">多路选择配合th:case 使用</td>
+<td align="center"><code>&lt;div th:switch=&quot;${user.role}&quot;&gt;</code></td>
+</tr>
+<tr>
+<td align="center">th:case</td>
+<td align="center">th:switch的一个分支</td>
+<td align="center"><code>&lt;p th:case=&quot;&#39;admin&#39;&quot;&gt;User is an administrator&lt;/p&gt;</code></td>
+</tr>
+<tr>
+<td align="center">th:fragment</td>
+<td align="center">布局标签，定义一个代码片段，方便其它地方引用</td>
+<td align="center"><code>&lt;div th:fragment=&quot;alert&quot;&gt;</code></td>
+</tr>
+<tr>
+<td align="center">th:include</td>
+<td align="center">布局标签，替换内容到引入的文件</td>
+<td align="center"><code>&lt;head th:include=&quot;layout :: htmlhead&quot; th:with=&quot;title=&#39;xx&#39;&quot;&gt;&lt;/head&gt; /&gt;</code></td>
+</tr>
+<tr>
+<td align="center">th:replace</td>
+<td align="center">布局标签，替换整个标签到引入的文件</td>
+<td align="center"><code>&lt;div th:replace=&quot;fragments/header :: title&quot;&gt;&lt;/div&gt;</code></td>
+</tr>
+<tr>
+<td align="center">th:selected</td>
+<td align="center">selected选择框 选中</td>
+<td align="center"><code>th:selected=&quot;(${xxx.id} == ${configObj.dd})&quot;</code></td>
+</tr>
+<tr>
+<td align="center">th:src</td>
+<td align="center">图片类地址引入</td>
+<td align="center"><code>&lt;img class=&quot;img-responsive&quot; alt=&quot;App Logo&quot; th:src=&quot;@{/img/logo.png}&quot; /&gt;</code></td>
+</tr>
+<tr>
+<td align="center">th:inline</td>
+<td align="center">定义js脚本可以使用变量</td>
+<td align="center"><code>&lt;script type=&quot;text/javascript&quot; th:inline=&quot;javascript&quot;&gt;</code></td>
+</tr>
+<tr>
+<td align="center">th:action</td>
+<td align="center">表单提交的地址</td>
+<td align="center"><code>&lt;form action=&quot;subscribe.html&quot; th:action=&quot;@{/subscribe}&quot;&gt;</code></td>
+</tr>
+<tr>
+<td align="center">th:remove</td>
+<td align="center">删除某个属性</td>
+<td align="center"><code>&lt;tr th:remove=&quot;all&quot;&gt; 1.all:删除包含标签和所有的孩子。2.body:不包含标记删除,但删除其所有的孩子。3.tag:包含标记的删除,但不删除它的孩子。4.all-but-first:删除所有包含标签的孩子,除了第一个。5.none:什么也不做。这个值是有用的动态评估。</code></td>
+</tr>
+<tr>
+<td align="center">th:attr</td>
+<td align="center">设置标签属性，多个属性可以用逗号分隔</td>
+<td align="center"><code>比如 th:attr=&quot;src=@{/image/aa.jpg},title=#{logo}&quot;，此标签不太优雅，一般用的比较少。</code></td>
+</tr>
+</tbody></table>
+<br>
+**还有非常多的标签，这里只列出最常用的几个,由于一个标签内可以包含多个th:x属性，其生效的优先级顺序为: **
+<br>
+**include,each,if/unless/switch/case,with,attr/attrprepend/attrappend,value/href,src ,etc,text/utext,fragment,remove。**
+
+<h2 id="4-几种常用的用法"><a href="#4-几种常用的用法" class="headerlink" title="4. 几种常用的用法"></a>4. 几种常用的用法</h2><h3 id="（1）赋值、字符串拼接"><a href="#（1）赋值、字符串拼接" class="headerlink" title="（1）赋值、字符串拼接"></a>（1）赋值、字符串拼接</h3><pre><code> &lt;p  th:text=&quot;${collect.description}&quot;&gt;description&lt;/p&gt;
+ &lt;span th:text=&quot;&#39;Welcome to our application, &#39; + ${user.name} + &#39;!&#39;&quot;&gt;</code></pre><p>字符串拼接还有另外一种简洁的写法</p>
+<pre><code>&lt;span th:text=&quot;|Welcome to our application, ${user.name}!|&quot;&gt;</code></pre><h3 id="（2）条件判断-If-Unless"><a href="#（2）条件判断-If-Unless" class="headerlink" title="（2）条件判断 If/Unless"></a>（2）条件判断 If/Unless</h3><p>Thymeleaf中使用th:if和th:unless属性进行条件判断，下面的例子中，<a>标签只有在th:if中条件成立时才显示：</a></p>
+<pre><code>&lt;a th:if=&quot;${myself==&#39;yes&#39;}&quot; &gt; &lt;/i&gt; &lt;/a&gt;
+&lt;a th:unless=${session.user != null} th:href=&quot;@{/login}&quot; &gt;Login&lt;/a&gt;</code></pre><p>th:unless于th:if恰好相反，只有表达式中的条件不成立，才会显示其内容。</p>
+<p>也可以使用 (if) ? (then) : (else) 这种语法来判断显示的内容</p>
+<h3 id="（3）for-循环"><a href="#（3）for-循环" class="headerlink" title="（3）for 循环"></a>（3）for 循环</h3><pre><code>  &lt;tr  th:each=&quot;collect,iterStat : ${collects}&quot;&gt; 
+     &lt;th scope=&quot;row&quot; th:text=&quot;${collect.id}&quot;&gt;1&lt;/th&gt;
+     &lt;td &gt;
+        &lt;img th:src=&quot;${collect.webLogo}&quot;/&gt;
+     &lt;/td&gt;
+     &lt;td th:text=&quot;${collect.url}&quot;&gt;Mark&lt;/td&gt;
+     &lt;td th:text=&quot;${collect.title}&quot;&gt;Otto&lt;/td&gt;
+     &lt;td th:text=&quot;${collect.description}&quot;&gt;@mdo&lt;/td&gt;
+     &lt;td th:text=&quot;${terStat.index}&quot;&gt;index&lt;/td&gt;
+ &lt;/tr&gt;</code></pre><p><strong>iterStat称作状态变量，属性有：</strong><br>index:当前迭代对象的index（从0开始计算）<br>count: 当前迭代对象的index(从1开始计算)<br>size:被迭代对象的大小<br>current:当前迭代变量<br>even/odd:布尔值，当前循环是否是偶数/奇数（从0开始计算）<br>first:布尔值，当前循环是否是第一个<br>last:布尔值，当前循环是否是最后一个</p>
+<h3 id="（4）URL"><a href="#（4）URL" class="headerlink" title="（4）URL"></a>（4）URL</h3><p>URL在Web应用模板中占据着十分重要的地位，需要特别注意的是Thymeleaf对于URL的处理是通过语法@{…}来处理的。<br>如果需要Thymeleaf对URL进行渲染，那么务必使用th:href，th:src等属性，下面是一个例子</p>
+<pre><code>&lt;!-- Will produce &#39;http://localhost:8080/standard/unread&#39; (plus rewriting) --&gt;
+ &lt;a  th:href=&quot;@{/standard/{type}(type=${type})}&quot;&gt;view&lt;/a&gt;
+
+&lt;!-- Will produce &#39;/gtvg/order/3/details&#39; (plus rewriting) --&gt;
+&lt;a href=&quot;details.html&quot; th:href=&quot;@{/order/{orderId}/details(orderId=${o.id})}&quot;&gt;view&lt;/a&gt;</code></pre><p>设置背景</p>
+<pre><code>&lt;div th:style=&quot;&#39;background:url(&#39; + @{/&lt;path-to-image&gt;} + &#39;);&#39;&quot;&gt;&lt;/div&gt;</code></pre><p>根据属性值改变背景</p>
+<pre><code> &lt;div class=&quot;media-object resource-card-image&quot;  th:style=&quot;&#39;background:url(&#39; + @{(${collect.webLogo}==&#39;&#39; ? &#39;img/favicon.png&#39; : ${collect.webLogo})} + &#39;)&#39;&quot; &gt;&lt;/div&gt;</code></pre><p>几点说明：<br>上例中URL最后的(orderId=${o.id}) 表示将括号内的内容作为URL参数处理，该语法避免使用字符串拼接，大大提高了可读性<br>@{…}表达式中可以通过{orderId}访问Context中的orderId变量<br>@{/order}是Context相关的相对路径，在渲染时会自动添加上当前Web应用的Context名字，假设context名字为app，那么结果应该是/app/order</p>
+<h3 id="（5）内联js"><a href="#（5）内联js" class="headerlink" title="（5）内联js"></a>（5）内联js</h3><p>内联文本：[[…]]内联文本的表示方式，使用时，必须先用th:inline=”text/javascript/none”激活，th:inline可以在父级标签内使用，甚至作为body的标签。内联文本尽管比th:text的代码少，不利于原型显示。</p>
+<pre><code>&lt;script th:inline=&quot;javascript&quot;&gt;
+/*&lt;![CDATA[*/
+...
+var username = /*[[${sesion.user.name}]]*/ &#39;Sebastian&#39;;
+var size = /*[[${size}]]*/ 0;
+...
+/*]]&gt;*/
+&lt;/script&gt;</code></pre><p>js附加代码：</p>
+<pre><code>/*[+
+var msg = &#39;This is a working application&#39;;
++]*/</code></pre><p>js移除代码：</p>
+<pre><code>/*[- */
+var msg = &#39;This is a non-working template&#39;;
+/* -]*/</code></pre><h3 id="（6）内嵌变量"><a href="#（6）内嵌变量" class="headerlink" title="（6）内嵌变量"></a>（6）内嵌变量</h3><p>为了模板更加易用，Thymeleaf还提供了一系列Utility对象（内置于Context中），可以通过#直接访问：<br>dates ： java.util.Date的功能方法类。<br>calendars : 类似#dates，面向java.util.Calendar<br>numbers : 格式化数字的功能方法类<br>strings : 字符串对象的功能类，contains,startWiths,prepending/appending等等。<br>objects: 对objects的功能类操作。<br>bools: 对布尔值求值的功能方法。<br>arrays：对数组的功能类方法。<br>lists: 对lists功能类方法<br>sets<br>maps<br>…
+下面用一段代码来举例一些常用的方法：<br><strong>dates</strong></p>
+<pre><code>/*
+ * Format date with the specified pattern
+ * Also works with arrays, lists or sets
+ */
+${#dates.format(date, &#39;dd/MMM/yyyy HH:mm&#39;)}
+${#dates.arrayFormat(datesArray, &#39;dd/MMM/yyyy HH:mm&#39;)}
+${#dates.listFormat(datesList, &#39;dd/MMM/yyyy HH:mm&#39;)}
+${#dates.setFormat(datesSet, &#39;dd/MMM/yyyy HH:mm&#39;)}
+
+/*
+ * Create a date (java.util.Date) object for the current date and time
+ */
+${#dates.createNow()}
+
+/*
+ * Create a date (java.util.Date) object for the current date (time set to 00:00)
+ */
+${#dates.createToday()}</code></pre><p><strong>strings</strong></p>
+<pre><code>/*
+ * Check whether a String is empty (or null). Performs a trim() operation before check
+ * Also works with arrays, lists or sets
+ */
+${#strings.isEmpty(name)}
+${#strings.arrayIsEmpty(nameArr)}
+${#strings.listIsEmpty(nameList)}
+${#strings.setIsEmpty(nameSet)}
+
+/*
+ * Check whether a String starts or ends with a fragment
+ * Also works with arrays, lists or sets
+ */
+${#strings.startsWith(name,&#39;Don&#39;)}                  // also array*, list* and set*
+${#strings.endsWith(name,endingFragment)}           // also array*, list* and set*
+
+/*
+ * Compute length
+ * Also works with arrays, lists or sets
+ */
+${#strings.length(str)}
+
+/*
+ * Null-safe comparison and concatenation
+ */
+${#strings.equals(str)}
+${#strings.equalsIgnoreCase(str)}
+${#strings.concat(str)}
+${#strings.concatReplaceNulls(str)}
+
+/*
+ * Random
+ */
+${#strings.randomAlphanumeric(count)}</code></pre><h2 id="5-使用thymeleaf布局"><a href="#5-使用thymeleaf布局" class="headerlink" title="5. 使用thymeleaf布局"></a>5. 使用thymeleaf布局</h2><p>使用thymeleaf布局非常的方便<br>定义代码片段</p>
+<pre><code>&lt;footer th:fragment=&quot;copy&quot;&gt; 
+&amp;copy; 2016
+&lt;/footer&gt;</code></pre><p>在页面任何地方引入：</p>
+<pre><code>&lt;body&gt; 
+  &lt;div th:include=&quot;footer :: copy&quot;&gt;&lt;/div&gt;
+  &lt;div th:replace=&quot;footer :: copy&quot;&gt;&lt;/div&gt;
+ &lt;/body&gt;</code></pre><p>th:include 和 th:replace区别，include只是加载，replace是替换</p>
+<p>返回的HTML如下：</p>
+<pre><code>&lt;body&gt; 
+   &lt;div&gt; &amp;copy; 2016 &lt;/div&gt; 
+  &lt;footer&gt;&amp;copy; 2016 &lt;/footer&gt; 
+&lt;/body&gt;</code></pre><p>下面是一个常用的后台页面布局，将整个页面分为头部，尾部、菜单栏、隐藏栏，点击菜单只改变content区域的页面</p>
+<pre><code>&lt;body class=&quot;layout-fixed&quot;&gt;
+  &lt;div th:fragment=&quot;navbar&quot;  class=&quot;wrapper&quot;  role=&quot;navigation&quot;&gt;
+    &lt;div th:replace=&quot;fragments/header :: header&quot;&gt;Header&lt;/div&gt;
+    &lt;div th:replace=&quot;fragments/left :: left&quot;&gt;left&lt;/div&gt;
+    &lt;div th:replace=&quot;fragments/sidebar :: sidebar&quot;&gt;sidebar&lt;/div&gt;
+    &lt;div layout:fragment=&quot;content&quot; id=&quot;content&quot; &gt;&lt;/div&gt;
+    &lt;div th:replace=&quot;fragments/footer :: footer&quot;&gt;footer&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/body&gt;</code></pre><p>任何页面想使用这样的布局值只需要替换中见的 content模块即可</p>
+<pre><code> &lt;html xmlns:th=&quot;http://www.thymeleaf.org&quot; layout:decorator=&quot;layout&quot;&gt;
+   &lt;body&gt;
+      &lt;section layout:fragment=&quot;content&quot;&gt;
+    ...</code></pre><p>也可以在引用模版的时候传参</p>
+<pre><code>&lt;head th:include=&quot;layout :: htmlhead&quot; th:with=&quot;title=&#39;Hello&#39;&quot;&gt;&lt;/head&gt;</code></pre><p>layout 是文件地址，如果有文件夹可以这样写 fileName/layout:htmlhead<br>htmlhead 是指定义的代码片段 如 th:fragment=”copy”</p>
+
+            </div>
+            <hr/>
+
+            
+            <style>
+    #reward {
+        margin: 40px 0;
+        text-align: center;
+    }
+
+    #reward .reward-link {
+        font-size: 1.88rem;
+    }
+
+    #reward .btn-floating:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #rewardModal {
+        width: 320px;
+        height: 350px;
+    }
+
+    #rewardModal .reward-title {
+        margin: 15px auto;
+        padding-bottom: 5px;
+    }
+
+    #rewardModal .modal-content {
+        padding: 10px;
+    }
+
+    #rewardModal .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 1.3rem;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    #rewardModal .close:hover {
+        color: #ef5350;
+        transform: scale(1.3);
+        -moz-transform:scale(1.3);
+        -webkit-transform:scale(1.3);
+        -o-transform:scale(1.3);
+    }
+
+    #rewardModal .reward-tabs {
+        margin: 0 auto;
+        width: 210px;
+    }
+
+    .reward-tabs .tabs {
+        height: 38px;
+        margin: 10px auto;
+        padding-left: 0;
+    }
+
+    .reward-content ul {
+        padding-left: 0 !important;
+    }
+
+    .reward-tabs .tabs .tab {
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .reward-tabs .tab a {
+        color: #fff;
+        background-color: #ccc;
+    }
+
+    .reward-tabs .tab a:hover {
+        background-color: #ccc;
+        color: #fff;
+    }
+
+    .reward-tabs .wechat-tab .active {
+        color: #fff !important;
+        background-color: #22AB38 !important;
+    }
+
+    .reward-tabs .alipay-tab .active {
+        color: #fff !important;
+        background-color: #019FE8 !important;
+    }
+
+    .reward-tabs .reward-img {
+        width: 210px;
+        height: 210px;
+    }
+</style>
+
+<div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-large waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fa fa-close"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.png" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+            
+
+            <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+
+<div id="article-share">
+    
+    <div class="social-share" data-disabled="qzone" data-wechat-qrcode-helper="<p>微信里点“发现”->“扫一扫”二维码便可查看分享。</p>"></div>
+    
+</div>
+
+<script src="/libs/share/js/social-share.min.js"></script>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        <p class="reprint-tip">
+            <i class="fa fa-exclamation-triangle"></i>&nbsp;&nbsp;
+            <span>转载规则</span>
+        </p>
+        
+            <div class="center-align">
+                <a rel="license" href="https://creativecommons.org/licenses/by/4.0/deed.zh">
+                    <img alt=""
+                         style="border-width:0"
+                         src="https://i.creativecommons.org/l/by/4.0/88x31.png"/>
+                </a>
+            </div>
+            <br/>
+            <span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text"
+                  property="dct:title" rel="dct:type">
+                    《Thymeleaf -- 一款可以替代jsp的模板引擎》
+                </span> 由
+            <a xmlns:cc="http://creativecommons.org/ns#" href="/2019/06/11/learnthymeleaf/" property="cc:attributionName"
+               rel="cc:attributionURL">
+                陈桦峰
+            </a> 采用
+            <a rel="license" href="https://creativecommons.org/licenses/by/4.0/deed.zh">
+                知识共享署名 4.0 国际许可协议
+            </a>进行许可。
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+    <div class="livere-card card" data-aos="fade-up">
+	<!-- 来必力City版安装代码 -->
+	<div id="lv-container" data-id="city" data-uid="MTAyMC80NDY3Ny8yMTIwMw==">
+	<script type="text/javascript">
+	   (function(d, s) {
+	       var j, e = d.getElementsByTagName(s)[0];
+	
+	       if (typeof LivereTower === 'function') { return; }
+	
+	       j = d.createElement(s);
+	       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+	       j.async = true;
+	
+	       e.parentNode.insertBefore(j, e);
+	   })(document, 'script');
+	</script>
+	<noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+	</div>
+	<!-- City版安装代码已完成 -->
+</div>
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6 overflow-policy" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/2019/06/11/uselivere/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/6.jpg" class="responsive-img" alt="如何安装livere(来必力)到你的hexo博客中">
+                        
+                        <span class="card-title">如何安装livere(来必力)到你的hexo博客中</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            Hexo之安装Livere评论插件上一篇文章说了如何搭建自己的个人博客之后，那为了方便交流，评论模块也是必不可少的，那这一篇文章就带你快速安装一个评论模块到你的HEXO博客中，这里我使用的是韩国的评论插件：livere(来必力)
+1.注册激
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="fa fa-clock-o fa-fw icon-date"></i>2019-06-11
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/分享创造/" class="post-category" target="_blank">
+                                    分享创造
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Livere/" target="_blank">
+                        <span class="chip bg-color">Livere</span>
+                    </a>
+                    
+                    <a href="/tags/个人博客/" target="_blank">
+                        <span class="chip bg-color">个人博客</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6 overflow-policy" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fa fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2019/06/05/howtocreateblog/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/9.jpg" class="responsive-img" alt="打造一个属于自己的个人博客（使用HEXO搭建，配合github主页部署）">
+                        
+                        <span class="card-title">打造一个属于自己的个人博客（使用HEXO搭建，配合github主页部署）</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            一、打造初心现在市面上的博客很多，如CSDN，博客园，简书等平台，可以直接在上面发表，用户交互做的好，写的文章百度也能搜索的到。缺点是比较不自由，会受到平台的各种限制和恶心的广告。
+而自己购买域名和服务器，搭建博客的成本实在是太高了，不光是
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-06-05
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/分享创造/" class="post-category" target="_blank">
+                                    分享创造
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/个人博客/" target="_blank">
+                        <span class="chip bg-color">个人博客</span>
+                    </a>
+                    
+                    <a href="/tags/HEXO/" target="_blank">
+                        <span class="chip bg-color">HEXO</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+</div>
+
+
+<script>
+    $('#articleContent').on('copy', function (e) {
+        // IE8 or earlier browser is 'undefined'
+        if (typeof window.getSelection === 'undefined') return;
+
+        var selection = window.getSelection();
+        // if the selection is short let's not annoy our users.
+        if (('' + selection).length < Number.parseInt('120')) {
+            return;
+        }
+
+        // create a div outside of the visible area and fill it with the selected text.
+        var bodyElement = document.getElementsByTagName('body')[0];
+        var newdiv = document.createElement('div');
+        newdiv.style.position = 'absolute';
+        newdiv.style.left = '-99999px';
+        bodyElement.appendChild(newdiv);
+        newdiv.appendChild(selection.getRangeAt(0).cloneContents());
+
+        // we need a <pre> tag workaround.
+        // otherwise the text inside "pre" loses all the line breaks!
+        if (selection.getRangeAt(0).commonAncestorContainer.nodeName === 'PRE') {
+            newdiv.innerHTML = "<pre>" + newdiv.innerHTML + "</pre>";
+        }
+
+        var url = document.location.href;
+        newdiv.innerHTML += '<br />'
+            + '来源: 桦峰的blog<br />'
+            + '作者: 陈桦峰<br />'
+            + '链接: <a href="' + url + '">' + url + '</a><br />'
+            + '本文章著作权归作者所有，任何形式的转载都请注明出处。';
+
+        selection.selectAllChildren(newdiv);
+        window.setTimeout(function () {bodyElement.removeChild(newdiv);}, 200);
+    });
+</script>
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget">
+            <div class="toc-title"><i class="fa fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fa fa-list"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            // headingsOffset: -205,
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).slideUp(500);
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).slideDown(500);
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+    
+
+</main>
+
+
+<footer class="page-footer bg-color">
+    <div class="container row center-align">
+        <div class="col s12 m8 l8 copy-right">
+            本站由&copy;<a href="https://blinkfox.github.io/" target="_blank">陈桦峰</a>基于
+            <a href="https://hexo.io/" target="_blank">Hexo</a> 的
+            <a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">hexo-theme-matery</a>主题搭建.
+
+            
+
+            
+			
+                <br>
+                
+                <span id="busuanzi_container_site_pv">
+                    <i class="fa fa-heart-o"></i>
+                    本站总访问量 <span id="busuanzi_value_site_pv" class="white-color"></span>
+                </span>
+                
+                
+                <span id="busuanzi_container_site_uv">
+                    <i class="fa fa-users"></i>
+                    次,&nbsp;访客数 <span id="busuanzi_value_site_uv" class="white-color"></span> 人.
+                </span>
+                
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/huafengchen520" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fa fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:940684164@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fa fa-envelope-open"></i>
+    </a>
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=940684164" class="tooltipped" data-tooltip="QQ联系我: 940684164" data-position="top" data-delay="50">
+        <i class="fa fa-qq"></i>
+    </a>
+
+
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fa fa-rss"></i>
+    </a>
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+<!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fa fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script src="/js/search.js"></script>
+<script type="text/javascript">
+$(function () {
+    searchFunc("/" + "search.xml", 'searchInput', 'searchResult');
+});
+</script>
+<!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fa fa-angle-up"></i>
+    </a>
+</div>
+
+
+<script src="/libs/materialize/materialize.min.js"></script>
+<script src="/libs/masonry/masonry.pkgd.min.js"></script>
+<script src="/libs/aos/aos.js"></script>
+<script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+<script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+<script src="/js/matery.js"></script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+
+    <script src="/libs/others/clicklove.js"></script>
+
+
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+
+
+</body>
+</html>

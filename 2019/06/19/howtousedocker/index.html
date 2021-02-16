@@ -1,0 +1,1121 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    <meta name="keywords" content="Docker --开源的应用容器引擎, blog，技术，学习，成长">
+    <meta name="description" content="一、Docker 是什么？
+1.Docker 简介Docker 是一个开源的应用容器引擎，基于 Go 语言 并遵从Apache2.0协议开源。Docker 可以让开发者打包他们的应用以及依赖包到一个轻量级、可移植的容器中，然后发布到任何流行">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>Docker --开源的应用容器引擎 | 桦峰的blog</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+    <style type="text/css">
+        
+    </style>
+
+    <script src="/libs/jquery/jquery-2.2.0.min.js"></script>
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+
+
+<body>
+
+<header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">桦峰的blog</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fa fa-navicon"></i></a>
+<ul class="right">
+    
+    <li class="hide-on-med-and-down">
+        <a href="/" class="waves-effect waves-light">
+            
+            <i class="fa fa-home"></i>
+            
+            <span>主页</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/tags" class="waves-effect waves-light">
+            
+            <i class="fa fa-tags"></i>
+            
+            <span>标签</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/categories" class="waves-effect waves-light">
+            
+            <i class="fa fa-bookmark"></i>
+            
+            <span>分类</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/archives" class="waves-effect waves-light">
+            
+            <i class="fa fa-archive"></i>
+            
+            <span>归档</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/about" class="waves-effect waves-light">
+            
+            <i class="fa fa-user-circle-o"></i>
+            
+            <span>关于作者</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/friends" class="waves-effect waves-light">
+            
+            <i class="fa fa-address-book"></i>
+            
+            <span>友情链接</span>
+        </a>
+    </li>
+    
+    <li>
+        <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+            <i id="searchIcon" class="fa fa-search" title="搜索"></i>
+        </a>
+    </li>
+</ul>
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">桦峰的blog</div>
+        <div class="logo-desc">
+            
+            最怕不甘平庸，却又不愿行动
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li>
+            <a href="/" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-home"></i>
+                
+                主页
+            </a>
+        </li>
+        
+        <li>
+            <a href="/tags" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-tags"></i>
+                
+                标签
+            </a>
+        </li>
+        
+        <li>
+            <a href="/categories" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-bookmark"></i>
+                
+                分类
+            </a>
+        </li>
+        
+        <li>
+            <a href="/archives" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-archive"></i>
+                
+                归档
+            </a>
+        </li>
+        
+        <li>
+            <a href="/about" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-user-circle-o"></i>
+                
+                关于作者
+            </a>
+        </li>
+        
+        <li>
+            <a href="/friends" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-address-book"></i>
+                
+                友情链接
+            </a>
+        </li>
+        
+        
+    </ul>
+</div>
+
+        </div>
+
+        
+    </nav>
+
+</header>
+
+
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/myphoto/1.jpg')">
+    <div class="container">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <div class="description center-align post-title">
+                        Docker --开源的应用容器引擎
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        margin: 35px 0 15px 0;
+        padding-left: 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #toc-content .is-active-link::before {
+        background-color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 20px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/应用容器引擎/" target="_blank">
+                                <span class="chip bg-color">应用容器引擎</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fa fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/后端开发/" class="post-category" target="_blank">
+                                后端开发
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                <div class="post-date info-break-policy">
+                    <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2019-06-19
+                </div>
+
+                
+				
+				
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="fa fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
+            </div>
+        </div>
+        <hr class="clearfix">
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h1 id="一、Docker-是什么？"><a href="#一、Docker-是什么？" class="headerlink" title="一、Docker 是什么？"></a>一、Docker 是什么？</h1><p><img src="https://www.runoob.com/wp-content/uploads/2016/04/docker01.png" alt="Docker"></p>
+<h2 id="1-Docker-简介"><a href="#1-Docker-简介" class="headerlink" title="1.Docker 简介"></a>1.Docker 简介</h2><p>Docker 是一个开源的应用容器引擎，基于 Go 语言 并遵从Apache2.0协议开源。<br>Docker 可以让开发者打包他们的应用以及依赖包到一个轻量级、可移植的容器中，然后发布到任何流行的 Linux 机器上，也可以实现虚拟化。<br>容器是完全使用沙箱机制，相互之间不会有任何接口（类似 iPhone 的 app）,更重要的是容器性能开销极低。它提供了一个简单、轻量的建模方式，使开发生命周期更高效快速，鼓励了面向服务的架构设计。Docker 项目的目标是实现轻量级的操作系统虚拟化解决方案。 Docker 的基础是 Linux 容器（LXC）等技术。在 LXC 的基础上 Docker 进行了进一步的封装，让用户不需要去关心容器的管理，使得操作更为简便。用户操作 Docker 的容器就像操作一个快速轻量级的虚拟机一样简单。<br>Docker 从 17.03 版本之后分为 CE（Community Edition: 社区版） 和 EE（Enterprise Edition: 企业版），我们用社区版就可以了。<br>适用人群：运维工程师及后端开发人员</p>
+<h2 id="2-Docker-应用场景"><a href="#2-Docker-应用场景" class="headerlink" title="2.Docker 应用场景"></a>2.Docker 应用场景</h2><p>Web 应用的自动化打包和发布。<br>自动化测试和持续集成、发布。<br>在服务型环境中部署和调整数据库或其他的后台应用。<br>从头编译或者扩展现有的OpenShift或Cloud Foundry平台来搭建自己的PaaS环境。</p>
+<h2 id="3-Docker-的优点"><a href="#3-Docker-的优点" class="headerlink" title="3.Docker 的优点"></a>3.Docker 的优点</h2><ul>
+<li>简化程序：<br>Docker 让开发者可以打包他们的应用以及依赖包到一个可移植的容器中，然后发布到任何流行的 Linux 机器上，便可以实现虚拟化。Docker改变了虚拟化的方式，使开发者可以直接将自己的成果放入Docker中进行管理。方便快捷已经是 Docker的最大优势，过去需要用数天乃至数周的任务，在Docker容器的处理下，只需要数秒就能完成。</li>
+<li>避免选择恐惧症：<br>如果你有选择恐惧症，还是资深患者。Docker 帮你打包你的纠结！比如 Docker 镜像；Docker 镜像中包含了运行环境和配置，所以 Docker可以简化部署多种应用实例工作。比如 Web 应用、后台应用、数据库应用、大数据应用比如 Hadoop 集群、消息队列等等都可以打包成一个镜像部署。</li>
+<li>节省开支：<br>一方面，云计算时代到来，使开发者不必为了追求效果而配置高额的硬件，Docker 改变了高性能必然高价格的思维定势。Docker 与云的结合，让云空间得到更充分的利用。不仅解决了硬件管理的问题，也改变了虚拟化的方式。</li>
+</ul>
+<h2 id="4-Docker-的特点"><a href="#4-Docker-的特点" class="headerlink" title="4.Docker 的特点"></a>4.Docker 的特点</h2><ul>
+<li>更快速的交付和部署</li>
+<li>更高效的虚拟化</li>
+<li>更轻松的迁移和扩展</li>
+<li>更简单的管理</li>
+<li>容器技术与传统虚拟机性能对比</li>
+</ul>
+<p><img src="https://mc.qcloudimg.com/static/img/22ee2d58d0cdc02c906239ee10e022ef/image.png" alt="容器技术与传统虚拟机性能对比"></p>
+<p><strong>Docker与虚拟机建构对比</strong><br><img src="https://mc.qcloudimg.com/static/img/6afde94bc4570cba2c9e27f0bdc81350/image.png" alt="Docker与虚拟机建构对比"></p>
+<p><strong>Docker 容器本质上是宿主机上的一个进程。</strong>Docker 通过 namespace 实现了资源隔离，通过 cgroups 实现了资源的限制，通过写时复制机制（copy-on-write）实现了高效的文件操作。<br><strong>Docker有五个命名空间：进程、网络、挂载、宿主和共享内存。</strong>为了隔离有问题的应用，Docker运用Namespace将进程隔离，为进程或进程组创建已隔离的运行空间，为进程提供不同的命名空间视图。这样，每一个隔离出来的进程组，对外就表现为一个container(容器)。需要注意的是，Docker让用户误以为自己占据了全部资源，但这并不是”虚拟机”。</p>
+<h2 id="5-Docker-中的三个概念：镜像，容器，仓库"><a href="#5-Docker-中的三个概念：镜像，容器，仓库" class="headerlink" title="5.Docker 中的三个概念：镜像，容器，仓库"></a>5.Docker 中的三个概念：镜像，容器，仓库</h2><ul>
+<li>镜像（image）：Docker 镜像就是一个只读的模板，镜像可以用来创建 Docker 容器。Docker 提供了一个很简单的机制来创建镜像或者更新现有的镜像，用户甚至可以直接从其他人那里下载一个已经做好的镜像来直接使用。<br>镜像是一种文件结构。Dockerfile中的每条命令都会在文件系统中创建一个新的层次结构，文件系统在这些层次上构建起来，镜像就构建于这些联合的文件系统之上。Docker官方网站专门有一个页面来存储所有可用的镜像，网址是：index.docker.io。</li>
+<li>容器（ Container）：容器是从镜像创建的运行实例。它可以被启动、开始、停止、删除。每个容器都是相互隔离的、保证安全的平台。可以把容器看做是一个简易版的 Linux 环境，Docker 利用容器来运行应用。镜像是只读的，容器在启动的时候创建一层可写层作为最上层。</li>
+<li>仓库：仓库是集中存放镜像文件的场所，仓库注册服务器（Registry）上往往存放着多个仓库，每个仓库中又包含了多个镜像，每个镜像有不同的标签（tag）。目前，最大的公开仓库是 Docker Hub，存放了数量庞大的镜像供用户下载。</li>
+</ul>
+<p>Docker仓库用来保存我们的images，当我们创建了自己的image之后我们就可以使用push命令将它上传到公有或者私有仓库，这样下次要在另外一台机器上使用这个image时候，只需要从仓库上pull下来就可以了。Docker 仓库的概念跟 Git 类似，注册服务器可以理解为 GitHub 这样的托管服务。</p>
+<h1 id="二、Docker-安装（CentOS-7-下）"><a href="#二、Docker-安装（CentOS-7-下）" class="headerlink" title="二、Docker 安装（CentOS 7 下）"></a>二、Docker 安装（CentOS 7 下）</h1><p>Docker 要求 CentOS 系统的内核版本高于 3.10 ，查看本页面的前提条件来验证你的CentOS 版本是否支持 Docker 。<br>通过 uname -r 命令查看你当前的内核版本</p>
+<pre><code>[root@runoob ~]# uname -r </code></pre><h2 id="安装-Docker"><a href="#安装-Docker" class="headerlink" title="安装 Docker"></a>安装 Docker</h2><p>从 2017 年 3 月开始 docker 在原来的基础上分为两个分支版本: Docker CE 和 Docker EE。<br>Docker CE 即社区免费版，Docker EE 即企业版，强调安全，但需付费使用。<br>本文介绍 Docker CE 的安装使用。<br>移除旧的版本：</p>
+<pre><code>$ sudo yum remove docker \
+                  docker-client \
+                  docker-client-latest \
+                  docker-common \
+                  docker-latest \
+                  docker-latest-logrotate \
+                  docker-logrotate \
+                  docker-selinux \
+                  docker-engine-selinux \
+                  docker-engine</code></pre><p>安装一些必要的系统工具：</p>
+<pre><code>sudo yum install -y yum-utils device-mapper-persistent-data lvm2</code></pre><p>添加软件源信息：</p>
+<pre><code>sudo yum-config-manager --add-repo http://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo</code></pre><p>更新 yum 缓存：</p>
+<pre><code>sudo yum makecache fast</code></pre><p>安装 Docker-ce：</p>
+<pre><code>sudo yum -y install docker-ce</code></pre><p>启动 Docker 后台服务</p>
+<pre><code>sudo systemctl start docker</code></pre><p>测试运行 hello-world</p>
+<pre><code>[root@runoob ~]# docker run hello-world</code></pre><p>由于本地没有hello-world这个镜像，所以会下载一个hello-world的镜像，并在容器内运行。</p>
+<h2 id="使用脚本安装-Docker"><a href="#使用脚本安装-Docker" class="headerlink" title="使用脚本安装 Docker"></a>使用脚本安装 Docker</h2><p>1、使用 sudo 或 root 权限登录 Centos。<br>2、确保 yum 包更新到最新。</p>
+<pre><code>$ sudo yum update</code></pre><p>3、执行 Docker 安装脚本。</p>
+<pre><code>$ curl -fsSL https://get.docker.com -o get-docker.sh
+$ sudo sh get-docker.sh</code></pre><p>执行这个脚本会添加 docker.repo 源并安装 Docker。<br>4、启动 Docker 进程。</p>
+<pre><code>sudo systemctl start docker</code></pre><p>5、验证 docker 是否安装成功并在容器中执行一个测试的镜像。</p>
+<pre><code>$ sudo docker run hello-world
+docker ps</code></pre><p>到此，Docker 在 CentOS 系统的安装完成。</p>
+<h2 id="镜像加速"><a href="#镜像加速" class="headerlink" title="镜像加速"></a>镜像加速</h2><p>鉴于国内网络问题，后续拉取 Docker 镜像十分缓慢，我们可以需要配置加速器来解决，我使用的是网易的镜像地址：<a href="http://hub-mirror.c.163.com。" target="_blank" rel="noopener">http://hub-mirror.c.163.com。</a><br>新版的 Docker 使用 /etc/docker/daemon.json（Linux） 或者 %programdata%\docker\config\daemon.json（Windows） 来配置 Daemon。<br>请在该配置文件中加入（没有该文件的话，请先建一个）：</p>
+<pre><code>{
+  &quot;registry-mirrors&quot;: [&quot;http://hub-mirror.c.163.com&quot;]
+}</code></pre><h2 id="删除-Docker-CE"><a href="#删除-Docker-CE" class="headerlink" title="删除 Docker CE"></a>删除 Docker CE</h2><p>执行以下命令来删除 Docker CE：</p>
+<pre><code>$ sudo yum remove docker-ce
+$ sudo rm -rf /var/lib/docker</code></pre><p><a href="https://www.runoob.com/docker/centos-docker-install.html" target="_blank" rel="noopener">其他系统的安装docker</a></p>
+<h1 id="三、Docker-的简单使用"><a href="#三、Docker-的简单使用" class="headerlink" title="三、Docker 的简单使用"></a>三、Docker 的简单使用</h1><p>Docker 允许你在容器内运行应用程序， 使用 docker run 命令来在容器内运行一个应用程序。<br>输出Hello world</p>
+<pre><code>runoob@runoob:~$ docker run ubuntu:15.10 /bin/echo &quot;Hello world&quot;
+Hello world</code></pre><p><strong>各个参数解析：</strong><br>docker: Docker 的二进制执行文件。<br>run:与前面的 docker 组合来运行一个容器。<br>ubuntu:15.10指定要运行的镜像，Docker首先从本地主机上查找镜像是否存在，如果不存在，Docker 就会从镜像仓库 Docker Hub 下载公共镜像。<br>/bin/echo “Hello world”: 在启动的容器里执行的命令</p>
+<p>以上命令完整的意思可以解释为：Docker 以 ubuntu15.10 镜像创建一个新容器，然后在容器里执行 bin/echo “Hello world”，然后输出结果。</p>
+<hr>
+<p>运行交互式的容器<br>我们通过docker的两个参数 -i -t，让docker运行的容器实现”对话”的能力</p>
+<pre><code>runoob@runoob:~$ docker run -i -t ubuntu:15.10 /bin/bash
+root@dc0050c79503:/#</code></pre><p>各个参数解析：<br>-t:在新容器内指定一个伪终端或终端。<br>-i:允许你对容器内的标准输入 (STDIN) 进行交互。<br>此时我们已进入一个 ubuntu15.10系统的容器<br>我们尝试在容器中运行命令 cat /proc/version和ls分别查看当前系统的版本信息和当前目录下的文件列表</p>
+<p>我们可以通过运行exit命令或者使用CTRL+D来退出容器。</p>
+<hr>
+<p>启动容器（后台模式）<br>使用以下命令创建一个以进程方式运行的容器</p>
+<pre><code>runoob@runoob:~$ docker run -d ubuntu:15.10 /bin/sh -c &quot;while true; do echo hello world; sleep 1; done&quot;
+2b1b7a428627c51ab8810d541d759f072b4fc75487eed05812646b8534a2fe63</code></pre><p>在输出中，我们没有看到期望的”hello world”，而是一串长字符<br>2b1b7a428627c51ab8810d541d759f072b4fc75487eed05812646b8534a2fe63<br>这个长字符串叫做容器ID，对每个容器来说都是唯一的，我们可以通过容器ID来查看对应的容器发生了什么。<br>首先，我们需要确认容器有在运行，可以通过 docker ps 来查看</p>
+<pre><code>runoob@runoob:~$ docker ps</code></pre><p>CONTAINER ID:容器ID<br>NAMES:自动分配的容器名称<br>在容器内使用docker logs命令，查看容器内的标准输出</p>
+<pre><code>runoob@runoob:~$ docker logs 2b1b7a428627</code></pre><pre><code>runoob@runoob:~$ docker logs amazing_cori</code></pre><hr>
+<p>停止容器<br>我们使用 docker stop 命令来停止容器:</p>
+<p>通过docker ps查看，容器已经停止工作:</p>
+<pre><code>runoob@runoob:~$ docker ps</code></pre><p>也可以用下面的命令来停止:</p>
+<pre><code>runoob@runoob:~$ docker stop amazing_cori</code></pre><h1 id="四、Docker-常用命令"><a href="#四、Docker-常用命令" class="headerlink" title="四、Docker 常用命令"></a>四、Docker 常用命令</h1><h2 id="1-信息-版本"><a href="#1-信息-版本" class="headerlink" title="1.信息/版本"></a>1.信息/版本</h2><p>docker info：显示 Docker 系统信息，包括镜像和容器数。。</p>
+<p>docker version：显示 Docker 版本信息。</p>
+<h2 id="2-容器生命周期管理"><a href="#2-容器生命周期管理" class="headerlink" title="2.容器生命周期管理"></a>2.容器生命周期管理</h2><h3 id="1-Docker-run-命令"><a href="#1-Docker-run-命令" class="headerlink" title="1).Docker run 命令:"></a>1).Docker run 命令:</h3><p>docker run ：创建一个新的容器并运行一个命令</p>
+<pre><code>docker run [OPTIONS] IMAGE [COMMAND] [ARG...]</code></pre><p><strong>OPTIONS说明：</strong><br>-a stdin: 指定标准输入输出内容类型，可选 STDIN/STDOUT/STDERR 三项；<br>-d: 后台运行容器，并返回容器ID；<br>-i: 以交互模式运行容器，通常与 -t 同时使用；<br>-P: 随机端口映射，容器内部端口随机映射到主机的高端口<br>-p: 指定端口映射，格式为：主机(宿主)端口:容器端口<br>-t: 为容器重新分配一个伪输入终端，通常与 -i 同时使用；<br>–name=”nginx-lb”: 为容器指定一个名称；<br>–dns 8.8.8.8: 指定容器使用的DNS服务器，默认和宿主一致；<br>–dns-search example.com: 指定容器DNS搜索域名，默认和宿主一致；<br>-h “mars”: 指定容器的hostname；<br>-e username=”ritchie”: 设置环境变量；<br>–env-file=[]: 从指定文件读入环境变量；<br>–cpuset=”0-2” or –cpuset=”0,1,2”: 绑定容器到指定CPU运行；<br>-m :设置容器使用内存最大值；<br>–net=”bridge”: 指定容器的网络连接类型，支持 bridge/host/none/container: 四种类型；<br>–link=[]: 添加链接到另一个容器；<br>–expose=[]: 开放一个端口或一组端口；</p>
+<p><strong>实例</strong><br>使用docker镜像nginx:latest以后台模式启动一个容器,并将容器命名为mynginx。</p>
+<pre><code>docker run --name mynginx -d nginx:latest</code></pre><p>使用镜像nginx:latest以后台模式启动一个容器,并将容器的80端口映射到主机随机端口。</p>
+<pre><code>docker run -P -d nginx:latest</code></pre><p>使用镜像 nginx:latest，以后台模式启动一个容器,将容器的 80 端口映射到主机的 80 端口,主机的目录 /data 映射到容器的 /data。</p>
+<pre><code>docker run -p 80:80 -v /data:/data -d nginx:latest</code></pre><p>绑定容器的 8080 端口，并将其映射到本地主机 127.0.0.1 的 80 端口上。</p>
+<pre><code>$ docker run -p 127.0.0.1:80:8080/tcp ubuntu bash</code></pre><p>使用镜像nginx:latest以交互模式启动一个容器,在容器内执行/bin/bash命令。</p>
+<pre><code>runoob@runoob:~$ docker run -it nginx:latest /bin/bash
+root@b8573233d675:/# </code></pre><h3 id="2-Docker-start-stop-restart-命令"><a href="#2-Docker-start-stop-restart-命令" class="headerlink" title="2).Docker start/stop/restart 命令"></a>2).Docker start/stop/restart 命令</h3><p>docker start :启动一个或多个已经被停止的容器<br>docker stop :停止一个运行中的容器<br>docker restart :重启容器<br><strong>语法</strong></p>
+<pre><code>docker start [OPTIONS] CONTAINER [CONTAINER...]
+docker stop [OPTIONS] CONTAINER [CONTAINER...]
+docker restart [OPTIONS] CONTAINER [CONTAINER...]</code></pre><p><strong>实例</strong><br>启动已被停止的容器myrunoob</p>
+<pre><code>docker start myrunoob</code></pre><p>停止运行中的容器myrunoob</p>
+<pre><code>docker stop myrunoob</code></pre><p>重启容器myrunoob</p>
+<pre><code>docker restart myrunoob</code></pre><h3 id="3-Docker-kill-命令"><a href="#3-Docker-kill-命令" class="headerlink" title="3).Docker kill 命令"></a>3).Docker kill 命令</h3><p>docker kill :杀掉一个运行中的容器。<br><strong>语法</strong></p>
+<pre><code>docker kill [OPTIONS] CONTAINER [CONTAINER...]</code></pre><p><strong>OPTIONS说明：</strong><br>-s :向容器发送一个信号<br><strong>实例</strong><br>杀掉运行中的容器mynginx</p>
+<pre><code>runoob@runoob:~$ docker kill -s KILL mynginx
+mynginx</code></pre><h3 id="4-Docker-rm-命令"><a href="#4-Docker-rm-命令" class="headerlink" title="4).Docker rm 命令"></a>4).Docker rm 命令</h3><p>docker rm ：删除一个或多少容器<br><strong>语法</strong></p>
+<pre><code>docker rm [OPTIONS] CONTAINER [CONTAINER...]</code></pre><p><strong>OPTIONS说明：</strong><br>-f :通过SIGKILL信号强制删除一个运行中的容器<br>-l :移除容器间的网络连接，而非容器本身<br>-v :-v 删除与容器关联的卷<br><strong>实例</strong><br>强制删除容器db01、db02</p>
+<pre><code>docker rm -f db01 db02</code></pre><p>移除容器nginx01对容器db01的连接，连接名db</p>
+<pre><code>docker rm -l db </code></pre><p>删除容器nginx01,并删除容器挂载的数据卷</p>
+<pre><code>docker rm -v nginx01</code></pre><h3 id="5-Docker-pause-unpause-命令"><a href="#5-Docker-pause-unpause-命令" class="headerlink" title="5).Docker pause/unpause 命令"></a>5).Docker pause/unpause 命令</h3><p>docker pause :暂停容器中所有的进程。<br>docker unpause :恢复容器中所有的进程。<br><strong>语法</strong></p>
+<pre><code>docker pause [OPTIONS] CONTAINER [CONTAINER...]
+docker unpause [OPTIONS] CONTAINER [CONTAINER...]</code></pre><p><strong>实例</strong><br>暂停数据库容器db01提供服务。</p>
+<pre><code>docker pause db01</code></pre><p>恢复数据库容器db01提供服务。</p>
+<pre><code>docker unpause db01</code></pre><p>6).Docker create 命令<br>docker create ：创建一个新的容器但不启动它<br>用法同 docker run<br><strong>语法</strong></p>
+<pre><code>docker create [OPTIONS] IMAGE [COMMAND] [ARG...]</code></pre><p>语法同 docker run<br><strong>实例</strong><br>使用docker镜像nginx:latest创建一个容器,并将容器命名为myrunoob</p>
+<pre><code>runoob@runoob:~$ docker create  --name myrunoob  nginx:latest      
+09b93464c2f75b7b69f83d56a9cfc23ceb50a48a9db7652ee4c27e3e2cb1961f</code></pre><p>7).Docker exec 命令<br>docker exec ：在运行的容器中执行命令<br><strong>语法</strong></p>
+<pre><code>docker exec [OPTIONS] CONTAINER COMMAND [ARG...]</code></pre><p><strong>OPTIONS说明：</strong><br>-d :分离模式: 在后台运行<br>-i :即使没有附加也保持STDIN 打开<br>-t :分配一个伪终端<br><strong>实例</strong><br>在容器 mynginx 中以交互模式执行容器内 /root/runoob.sh 脚本:</p>
+<pre><code>runoob@runoob:~$ docker exec -it mynginx /bin/sh /root/runoob.sh
+http://www.runoob.com/</code></pre><p>在容器 mynginx 中开启一个交互模式的终端:</p>
+<pre><code>runoob@runoob:~$ docker exec -i -t  mynginx /bin/bash
+root@b1a0703e41e7:/#</code></pre><p>也可以通过 docker ps -a 命令查看已经在运行的容器，然后使用容器 ID 进入容器。<br>查看已经在运行的容器 ID：</p>
+<pre><code>docker ps -a 
+...
+9df70f9a0714        openjdk             &quot;/usercode/script.sh…&quot; 
+...</code></pre><p>第一列的 9df70f9a0714 就是容器 ID。<br>通过 exec 命令对指定的容器执行 bash:</p>
+<pre><code>docker exec -it 9df70f9a0714 /bin/bash</code></pre><h2 id="3-容器操作"><a href="#3-容器操作" class="headerlink" title="3.容器操作"></a>3.容器操作</h2><h3 id="1-Docker-ps-命令"><a href="#1-Docker-ps-命令" class="headerlink" title="1).Docker ps 命令"></a>1).Docker ps 命令</h3><p>docker ps : 列出容器<br><strong>语法</strong></p>
+<pre><code>docker ps [OPTIONS]</code></pre><p><strong>OPTIONS说明：</strong><br>-a :显示所有的容器，包括未运行的。<br>-f :根据条件过滤显示的内容。<br>–format :指定返回值的模板文件。<br>-l :显示最近创建的容器。<br>-n :列出最近创建的n个容器。<br>–no-trunc :不截断输出。<br>-q :静默模式，只显示容器编号。<br>-s :显示总的文件大小。<br><strong>实例</strong><br>列出所有在运行的容器信息。</p>
+<pre><code>runoob@runoob:~$ docker ps
+CONTAINER ID   IMAGE          COMMAND                ...  PORTS                    NAMES
+09b93464c2f7   nginx:latest   &quot;nginx -g &#39;daemon off&quot; ...  80/tcp, 443/tcp          myrunoob
+96f7f14e99ab   mysql:5.6      &quot;docker-entrypoint.sh&quot; ...  0.0.0.0:3306-&gt;3306/tcp   mymysql</code></pre><p>列出最近创建的5个容器信息。</p>
+<pre><code>runoob@runoob:~$ docker ps -n 5
+CONTAINER ID        IMAGE               COMMAND                   CREATED           
+09b93464c2f7        nginx:latest        &quot;nginx -g &#39;daemon off&quot;    2 days ago   ...     
+b8573233d675        nginx:latest        &quot;/bin/bash&quot;               2 days ago   ...     
+b1a0703e41e7        nginx:latest        &quot;nginx -g &#39;daemon off&quot;    2 days ago   ...    
+f46fb1dec520        5c6e1090e771        &quot;/bin/sh -c &#39;set -x \t&quot;   2 days ago   ...   
+a63b4a5597de        860c279d2fec        &quot;bash&quot;                    2 days ago   ...</code></pre><p>列出所有创建的容器ID。</p>
+<pre><code>runoob@runoob:~$ docker ps -a -q
+09b93464c2f7
+b8573233d675
+b1a0703e41e7
+f46fb1dec520
+a63b4a5597de
+6a4aa42e947b
+de7bb36e7968
+43a432b73776
+664a8ab1a585
+ba52eb632bbd
+...</code></pre><h3 id="2-Docker-inspect-命令"><a href="#2-Docker-inspect-命令" class="headerlink" title="2).Docker inspect 命令"></a>2).Docker inspect 命令</h3><p>docker inspect : 获取容器/镜像的元数据。<br><strong>语法</strong></p>
+<pre><code>docker inspect [OPTIONS] NAME|ID [NAME|ID...]</code></pre><p><strong>OPTIONS说明：</strong><br>-f :指定返回值的模板文件。<br>-s :显示总的文件大小。<br>–type :为指定类型返回JSON。<br><strong>实例</strong><br>获取镜像mysql:5.6的元信息。</p>
+<pre><code>runoob@runoob:~$ docker inspect mysql:5.6
+[
+    {
+        &quot;Id&quot;: &quot;sha256:2c0964ec182ae9a045f866bbc2553087f6e42bfc16074a74fb820af235f070ec&quot;,
+        &quot;RepoTags&quot;: [
+            &quot;mysql:5.6&quot;
+        ],
+        &quot;RepoDigests&quot;: [],
+        &quot;Parent&quot;: &quot;&quot;,
+        &quot;Comment&quot;: &quot;&quot;,
+        &quot;Created&quot;: &quot;2016-05-24T04:01:41.168371815Z&quot;,
+        &quot;Container&quot;: &quot;e0924bc460ff97787f34610115e9363e6363b30b8efa406e28eb495ab199ca54&quot;,
+        &quot;ContainerConfig&quot;: {
+            &quot;Hostname&quot;: &quot;b0cf605c7757&quot;,
+            &quot;Domainname&quot;: &quot;&quot;,
+            &quot;User&quot;: &quot;&quot;,
+            &quot;AttachStdin&quot;: false,
+            &quot;AttachStdout&quot;: false,
+            &quot;AttachStderr&quot;: false,
+            &quot;ExposedPorts&quot;: {
+                &quot;3306/tcp&quot;: {}
+            },
+...</code></pre><p>获取正在运行的容器mymysql的 IP。</p>
+<pre><code>runoob@runoob:~$ docker inspect --format=&#39;{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}&#39; mymysql
+172.17.0.3</code></pre><h3 id="3-Docker-top-命令"><a href="#3-Docker-top-命令" class="headerlink" title="3).Docker top 命令"></a>3).Docker top 命令</h3><p>docker top :查看容器中运行的进程信息，支持 ps 命令参数。<br><strong>语法</strong></p>
+<pre><code>docker top [OPTIONS] CONTAINER [ps OPTIONS]</code></pre><p>容器运行时不一定有/bin/bash终端来交互执行top命令，而且容器还不一定有top命令，可以使用docker top来实现查看container中正在运行的进程。<br><strong>实例</strong><br>查看容器mymysql的进程信息。</p>
+<pre><code>runoob@runoob:~/mysql$ docker top mymysql
+UID    PID    PPID    C      STIME   TTY  TIME       CMD
+999    40347  40331   18     00:58   ?    00:00:02   mysqld</code></pre><p>查看所有运行容器的进程信息。</p>
+<pre><code>for i in  `docker ps |grep Up|awk &#39;{print $1}&#39;`;do echo \ &amp;&amp;docker top $i; done</code></pre><h3 id="4-Docker-logs-命令"><a href="#4-Docker-logs-命令" class="headerlink" title="4).Docker logs 命令"></a>4).Docker logs 命令</h3><p>docker logs : 获取容器的日志<br><strong>语法</strong></p>
+<pre><code>docker logs [OPTIONS] CONTAINER</code></pre><p><strong>OPTIONS说明：</strong><br>-f : 跟踪日志输出<br>–since :显示某个开始时间的所有日志<br>-t : 显示时间戳<br>–tail :仅列出最新N条容器日志<br><strong>实例</strong><br>跟踪查看容器mynginx的日志输出。</p>
+<pre><code>runoob@runoob:~$ docker logs -f mynginx
+192.168.239.1 - - [10/Jul/2016:16:53:33 +0000] &quot;GET / HTTP/1.1&quot; 200 612 &quot;-&quot; &quot;Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.93 Safari/537.36&quot; &quot;-&quot;
+2016/07/10 16:53:33 [error] 5#5: *1 open() &quot;/usr/share/nginx/html/favicon.ico&quot; failed (2: No such file or directory), client: 192.168.239.1, server: localhost, request: &quot;GET /favicon.ico HTTP/1.1&quot;, host: &quot;192.168.239.130&quot;, referrer: &quot;http://192.168.239.130/&quot;
+192.168.239.1 - - [10/Jul/2016:16:53:33 +0000] &quot;GET /favicon.ico HTTP/1.1&quot; 404 571 &quot;http://192.168.239.130/&quot; &quot;Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.93 Safari/537.36&quot; &quot;-&quot;
+192.168.239.1 - - [10/Jul/2016:16:53:59 +0000] &quot;GET / HTTP/1.1&quot; 304 0 &quot;-&quot; &quot;Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.93 Safari/537.36&quot; &quot;-&quot;
+...</code></pre><p>查看容器mynginx从2016年7月1日后的最新10条日志。</p>
+<pre><code>docker logs --since=&quot;2016-07-01&quot; --tail=10 mynginx</code></pre><h2 id="4-容器rootfs命令"><a href="#4-容器rootfs命令" class="headerlink" title="4.容器rootfs命令"></a>4.容器rootfs命令</h2><h3 id="1-Docker-commit-命令"><a href="#1-Docker-commit-命令" class="headerlink" title="1).Docker commit 命令"></a>1).Docker commit 命令</h3><p>docker commit :从容器创建一个新的镜像。<br><strong>语法</strong></p>
+<pre><code>docker commit [OPTIONS] CONTAINER [REPOSITORY[:TAG]]</code></pre><p><strong>OPTIONS说明：</strong><br>-a :提交的镜像作者；<br>-c :使用Dockerfile指令来创建镜像；<br>-m :提交时的说明文字；<br>-p :在commit时，将容器暂停。<br><strong>实例</strong><br>将容器a404c6c174a2 保存为新的镜像,并添加提交人信息和说明信息。</p>
+<pre><code>runoob@runoob:~$ docker commit -a &quot;runoob.com&quot; -m &quot;my apache&quot; a404c6c174a2  mymysql:v1 
+sha256:37af1236adef1544e8886be23010b66577647a40bc02c0885a6600b33ee28057
+runoob@runoob:~$ docker images mymysql:v1
+REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
+mymysql             v1                  37af1236adef        15 seconds ago      329 MB</code></pre><h3 id="2-Docker-cp-命令"><a href="#2-Docker-cp-命令" class="headerlink" title="2).Docker cp 命令"></a>2).Docker cp 命令</h3><p>docker cp :用于容器与主机之间的数据拷贝。<br><strong>语法</strong></p>
+<pre><code>docker cp [OPTIONS] CONTAINER:SRC_PATH DEST_PATH|-
+docker cp [OPTIONS] SRC_PATH|- CONTAINER:DEST_PATH</code></pre><p><strong>OPTIONS说明：</strong><br>-L :保持源目标中的链接<br><strong>实例</strong><br>将主机/www/runoob目录拷贝到容器96f7f14e99ab的/www目录下。</p>
+<pre><code>docker cp /www/runoob 96f7f14e99ab:/www/</code></pre><p>将主机/www/runoob目录拷贝到容器96f7f14e99ab中，目录重命名为www。</p>
+<pre><code>docker cp /www/runoob 96f7f14e99ab:/www</code></pre><p>将容器96f7f14e99ab的/www目录拷贝到主机的/tmp目录中。</p>
+<pre><code>docker cp  96f7f14e99ab:/www /tmp/</code></pre><h3 id="3-Docker-diff-命令"><a href="#3-Docker-diff-命令" class="headerlink" title="3).Docker diff 命令"></a>3).Docker diff 命令</h3><p>docker diff : 检查容器里文件结构的更改。<br><strong>语法</strong></p>
+<pre><code>docker diff [OPTIONS] CONTAINER</code></pre><p><strong>实例</strong><br>查看容器mymysql的文件结构更改。</p>
+<pre><code>runoob@runoob:~$ docker diff mymysql
+A /logs
+A /mysql_data
+C /run
+C /run/mysqld
+A /run/mysqld/mysqld.pid
+A /run/mysqld/mysqld.sock
+C /tmp</code></pre><h2 id="5-镜像仓库"><a href="#5-镜像仓库" class="headerlink" title="5.镜像仓库"></a>5.镜像仓库</h2><h3 id="1-Docker-login-logout-命令"><a href="#1-Docker-login-logout-命令" class="headerlink" title="1).Docker login/logout 命令"></a>1).Docker login/logout 命令</h3><p>docker login : 登陆到一个Docker镜像仓库，如果未指定镜像仓库地址，默认为官方仓库 Docker Hub<br>docker logout : 登出一个Docker镜像仓库，如果未指定镜像仓库地址，默认为官方仓库 Docker Hub<br><strong>语法</strong></p>
+<pre><code>docker login [OPTIONS] [SERVER]
+docker logout [OPTIONS] [SERVER]</code></pre><p><strong>OPTIONS说明：</strong><br>-u :登陆的用户名<br>-p :登陆的密码<br><strong>实例</strong><br>登陆到Docker Hub</p>
+<pre><code>docker login -u 用户名 -p 密码</code></pre><p>登出Docker Hub</p>
+<pre><code>docker logout</code></pre><h3 id="2-Docker-pull-命令"><a href="#2-Docker-pull-命令" class="headerlink" title="2).Docker pull 命令"></a>2).Docker pull 命令</h3><p>docker pull : 从镜像仓库中拉取或者更新指定镜像<br><strong>语法</strong></p>
+<pre><code>docker pull [OPTIONS] NAME[:TAG|@DIGEST]</code></pre><p><strong>OPTIONS说明：</strong><br>-a :拉取所有 tagged 镜像<br>–disable-content-trust :忽略镜像的校验,默认开启<br><strong>实例</strong><br>从Docker Hub下载java最新版镜像。</p>
+<pre><code>docker pull java</code></pre><p>从Docker Hub下载REPOSITORY为java的所有镜像。</p>
+<pre><code>docker pull -a java</code></pre><h3 id="3-Docker-push-命令"><a href="#3-Docker-push-命令" class="headerlink" title="3).Docker push 命令"></a>3).Docker push 命令</h3><p>docker push : 将本地的镜像上传到镜像仓库,要先登陆到镜像仓库<br><strong>语法</strong></p>
+<pre><code>docker push [OPTIONS] NAME[:TAG]</code></pre><p><strong>OPTIONS说明：</strong><br>–disable-content-trust :忽略镜像的校验,默认开启<br><strong>实例</strong><br>上传本地镜像myapache:v1到镜像仓库中。</p>
+<pre><code>docker push myapache:v1</code></pre><h3 id="4-Docker-search-命令"><a href="#4-Docker-search-命令" class="headerlink" title="4).Docker search 命令"></a>4).Docker search 命令</h3><p>docker search : 从Docker Hub查找镜像<br><strong>语法</strong></p>
+<pre><code>docker search [OPTIONS] TERM</code></pre><p><strong>OPTIONS说明：</strong><br>–automated :只列出 automated build类型的镜像；<br>–no-trunc :显示完整的镜像描述；<br>-s :列出收藏数不小于指定值的镜像。<br><strong>实例</strong><br>从Docker Hub查找所有镜像名包含java，并且收藏数大于10的镜像</p>
+<pre><code>runoob@runoob:~$ docker search -s 10 java
+NAME                  DESCRIPTION                           STARS   OFFICIAL   AUTOMATED
+java                  Java is a concurrent, class-based...   1037    [OK]       
+anapsix/alpine-java   Oracle Java 8 (and 7) with GLIBC ...   115                [OK]
+develar/java                                                 46                 [OK]
+isuper/java-oracle    This repository contains all java...   38                 [OK]
+lwieske/java-8        Oracle Java 8 Container - Full + ...   27                 [OK]
+nimmis/java-centos    This is docker images of CentOS 7...   13                 [OK]</code></pre><p><a href="https://www.runoob.com/docker/docker-command-manual.html" target="_blank" rel="noopener">6.更多命令</a></p>
+
+            </div>
+            <hr/>
+
+            
+            <style>
+    #reward {
+        margin: 40px 0;
+        text-align: center;
+    }
+
+    #reward .reward-link {
+        font-size: 1.88rem;
+    }
+
+    #reward .btn-floating:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #rewardModal {
+        width: 320px;
+        height: 350px;
+    }
+
+    #rewardModal .reward-title {
+        margin: 15px auto;
+        padding-bottom: 5px;
+    }
+
+    #rewardModal .modal-content {
+        padding: 10px;
+    }
+
+    #rewardModal .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 1.3rem;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    #rewardModal .close:hover {
+        color: #ef5350;
+        transform: scale(1.3);
+        -moz-transform:scale(1.3);
+        -webkit-transform:scale(1.3);
+        -o-transform:scale(1.3);
+    }
+
+    #rewardModal .reward-tabs {
+        margin: 0 auto;
+        width: 210px;
+    }
+
+    .reward-tabs .tabs {
+        height: 38px;
+        margin: 10px auto;
+        padding-left: 0;
+    }
+
+    .reward-content ul {
+        padding-left: 0 !important;
+    }
+
+    .reward-tabs .tabs .tab {
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .reward-tabs .tab a {
+        color: #fff;
+        background-color: #ccc;
+    }
+
+    .reward-tabs .tab a:hover {
+        background-color: #ccc;
+        color: #fff;
+    }
+
+    .reward-tabs .wechat-tab .active {
+        color: #fff !important;
+        background-color: #22AB38 !important;
+    }
+
+    .reward-tabs .alipay-tab .active {
+        color: #fff !important;
+        background-color: #019FE8 !important;
+    }
+
+    .reward-tabs .reward-img {
+        width: 210px;
+        height: 210px;
+    }
+</style>
+
+<div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-large waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fa fa-close"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.png" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+            
+
+            <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+
+<div id="article-share">
+    
+    <div class="social-share" data-disabled="qzone" data-wechat-qrcode-helper="<p>微信里点“发现”->“扫一扫”二维码便可查看分享。</p>"></div>
+    
+</div>
+
+<script src="/libs/share/js/social-share.min.js"></script>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        <p class="reprint-tip">
+            <i class="fa fa-exclamation-triangle"></i>&nbsp;&nbsp;
+            <span>转载规则</span>
+        </p>
+        
+            <div class="center-align">
+                <a rel="license" href="https://creativecommons.org/licenses/by/4.0/deed.zh">
+                    <img alt=""
+                         style="border-width:0"
+                         src="https://i.creativecommons.org/l/by/4.0/88x31.png"/>
+                </a>
+            </div>
+            <br/>
+            <span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text"
+                  property="dct:title" rel="dct:type">
+                    《Docker --开源的应用容器引擎》
+                </span> 由
+            <a xmlns:cc="http://creativecommons.org/ns#" href="/2019/06/19/howtousedocker/" property="cc:attributionName"
+               rel="cc:attributionURL">
+                陈桦峰
+            </a> 采用
+            <a rel="license" href="https://creativecommons.org/licenses/by/4.0/deed.zh">
+                知识共享署名 4.0 国际许可协议
+            </a>进行许可。
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+    <div class="livere-card card" data-aos="fade-up">
+	<!-- 来必力City版安装代码 -->
+	<div id="lv-container" data-id="city" data-uid="MTAyMC80NDY3Ny8yMTIwMw==">
+	<script type="text/javascript">
+	   (function(d, s) {
+	       var j, e = d.getElementsByTagName(s)[0];
+	
+	       if (typeof LivereTower === 'function') { return; }
+	
+	       j = d.createElement(s);
+	       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+	       j.async = true;
+	
+	       e.parentNode.insertBefore(j, e);
+	   })(document, 'script');
+	</script>
+	<noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+	</div>
+	<!-- City版安装代码已完成 -->
+</div>
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6 overflow-policy" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/2021/02/16/hello-world/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/5.jpg" class="responsive-img" alt="Hello World">
+                        
+                        <span class="card-title">Hello World</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hex
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="fa fa-clock-o fa-fw icon-date"></i>2021-02-16
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-user fa-fw"></i>
+                            陈桦峰
+                            
+                        </span>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6 overflow-policy" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fa fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2019/06/18/code2048/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/myphoto/3.jpg" class="responsive-img" alt="神秘的程序员们  --最懂程序员的漫画">
+                        
+                        <span class="card-title">神秘的程序员们  --最懂程序员的漫画</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            作为程序员，想必你肯定看过这样一组漫画：简洁的画风，常年驼背对着电脑敲代码的程序员，他表情木讷，嘴里吐槽的内容扎心又有趣，关键是这位程序员发量还很多！
+没错，这就是我们那些年来追过的《神秘的程序员们》系列漫画：
+
+关于漫画作者的专访不是码农
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-06-18
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/程序人生/" class="post-category" target="_blank">
+                                    程序人生
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/生活点滴/" target="_blank">
+                        <span class="chip bg-color">生活点滴</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+</div>
+
+
+<script>
+    $('#articleContent').on('copy', function (e) {
+        // IE8 or earlier browser is 'undefined'
+        if (typeof window.getSelection === 'undefined') return;
+
+        var selection = window.getSelection();
+        // if the selection is short let's not annoy our users.
+        if (('' + selection).length < Number.parseInt('120')) {
+            return;
+        }
+
+        // create a div outside of the visible area and fill it with the selected text.
+        var bodyElement = document.getElementsByTagName('body')[0];
+        var newdiv = document.createElement('div');
+        newdiv.style.position = 'absolute';
+        newdiv.style.left = '-99999px';
+        bodyElement.appendChild(newdiv);
+        newdiv.appendChild(selection.getRangeAt(0).cloneContents());
+
+        // we need a <pre> tag workaround.
+        // otherwise the text inside "pre" loses all the line breaks!
+        if (selection.getRangeAt(0).commonAncestorContainer.nodeName === 'PRE') {
+            newdiv.innerHTML = "<pre>" + newdiv.innerHTML + "</pre>";
+        }
+
+        var url = document.location.href;
+        newdiv.innerHTML += '<br />'
+            + '来源: 桦峰的blog<br />'
+            + '作者: 陈桦峰<br />'
+            + '链接: <a href="' + url + '">' + url + '</a><br />'
+            + '本文章著作权归作者所有，任何形式的转载都请注明出处。';
+
+        selection.selectAllChildren(newdiv);
+        window.setTimeout(function () {bodyElement.removeChild(newdiv);}, 200);
+    });
+</script>
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget">
+            <div class="toc-title"><i class="fa fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fa fa-list"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            // headingsOffset: -205,
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).slideUp(500);
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).slideDown(500);
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+    
+
+</main>
+
+
+<footer class="page-footer bg-color">
+    <div class="container row center-align">
+        <div class="col s12 m8 l8 copy-right">
+            本站由&copy;<a href="https://blinkfox.github.io/" target="_blank">陈桦峰</a>基于
+            <a href="https://hexo.io/" target="_blank">Hexo</a> 的
+            <a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">hexo-theme-matery</a>主题搭建.
+
+            
+
+            
+			
+                <br>
+                
+                <span id="busuanzi_container_site_pv">
+                    <i class="fa fa-heart-o"></i>
+                    本站总访问量 <span id="busuanzi_value_site_pv" class="white-color"></span>
+                </span>
+                
+                
+                <span id="busuanzi_container_site_uv">
+                    <i class="fa fa-users"></i>
+                    次,&nbsp;访客数 <span id="busuanzi_value_site_uv" class="white-color"></span> 人.
+                </span>
+                
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/huafengchen520" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fa fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:940684164@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fa fa-envelope-open"></i>
+    </a>
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=940684164" class="tooltipped" data-tooltip="QQ联系我: 940684164" data-position="top" data-delay="50">
+        <i class="fa fa-qq"></i>
+    </a>
+
+
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fa fa-rss"></i>
+    </a>
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+<!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fa fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script src="/js/search.js"></script>
+<script type="text/javascript">
+$(function () {
+    searchFunc("/" + "search.xml", 'searchInput', 'searchResult');
+});
+</script>
+<!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fa fa-angle-up"></i>
+    </a>
+</div>
+
+
+<script src="/libs/materialize/materialize.min.js"></script>
+<script src="/libs/masonry/masonry.pkgd.min.js"></script>
+<script src="/libs/aos/aos.js"></script>
+<script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+<script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+<script src="/js/matery.js"></script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+
+    <script src="/libs/others/clicklove.js"></script>
+
+
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+
+
+</body>
+</html>
